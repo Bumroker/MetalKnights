@@ -17,7 +17,7 @@ class TOONTANKS_API ATank : public ABasePawn
 public:
 	ATank();
 
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	//virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	void HandleDestruction();
 	APlayerController* GetTankPlayerController() const { return TankPlayerController; }
 	
@@ -36,12 +36,11 @@ private:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stats", meta=(AllowPrivateAccess="true"));
 	float Speed=800;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stats", meta=(AllowPrivateAccess="true"));
-	float RotationSpeed=200;
-
-
-	void Move(float Value);
-	void Rotate(float Value);
+	
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stats", meta=(AllowPrivateAccess="true"));
+	//float RotationSpeed=200;
+	//void Move(float Value);
+	//void Rotate(float Value);
 
 	APlayerController* TankPlayerController;
 

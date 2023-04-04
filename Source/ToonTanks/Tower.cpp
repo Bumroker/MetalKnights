@@ -30,7 +30,7 @@ void ATower::HandleDestruction(){
 }
 
 void ATower::CheckFireCondition(){
-    if (Tank) return;
+    if (Tank==nullptr) return;
     if(InFireRange() && Tank->bAlive){
         Fire();
     }

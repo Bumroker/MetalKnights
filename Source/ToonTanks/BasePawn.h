@@ -36,7 +36,7 @@ private:
 	class UParticleSystem* EsplosionParticles;
 
 	UPROPERTY(EditDefaultsOnly, Category="Combat")
-	TSubclassOf<class AProjectile> ProjectileClass;
+	TSubclassOf<class AProyectil> ProyectilClass;
 
 	UPROPERTY(EditAnywhere, Category="Combat")
 	class USoundBase* DeathSound;
@@ -45,6 +45,7 @@ protected:
 
 	void RotateTurret(FVector LookAtTarget);	
 
+	UFUNCTION(BlueprintCallable)
 	void Fire();
 
 
