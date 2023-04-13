@@ -12,19 +12,20 @@ class TOONTANKS_API AProyectil : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AProyectil();
+	
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	
 private:
+
+	UPROPERTY(EditAnywhere)
+	FName StandardPawnTag="Pawn";
 
 	UPROPERTY(EditDefaultsOnly, Category="Combat")
 	UStaticMeshComponent* ProjectileMesh;
-
-
-	
-
-	
 
 	UPROPERTY(EditAnywhere, Category="Combat")
 	class UParticleSystem* HitParticles;
@@ -40,12 +41,19 @@ private:
 
 	UPROPERTY(EditAnywhere, Category="Combat")
 	TSubclassOf<class UCameraShakeBase> HitCameraShakeClass;
+
+	
 	
 
 	UFUNCTION()
 	void Movement(float DeltaTime);
 	UFUNCTION()
+	void Bounce(FVector HitNormal);
+	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+	
+	
+
 
 public:	
 	// Called every frame
@@ -55,5 +63,9 @@ public:
 	float Speed=1300;
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	float Dmg=50;
+
+	UPROPERTY(EditAnywhere, Category="Combat")
+	bool Rebote;
+	void SetRebote(bool Reicochet){Rebote=Reicochet;}
 
 };

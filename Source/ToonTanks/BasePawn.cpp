@@ -6,6 +6,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "Proyectil.h"
+#include "Calculatriz.h"
 
 
 // Sets default values
@@ -37,11 +38,11 @@ void ABasePawn::RotateTurret(FVector LookAtTarget){
 
 }
 
-void ABasePawn::Fire(){
+FVector ABasePawn::Fire(bool Rebote){
 	FVector Location = SpawnPoint->GetComponentLocation();
 	FRotator Rotation = SpawnPoint->GetComponentRotation();
 	AProyectil* Proyectil = GetWorld()->SpawnActor<AProyectil>(ProyectilClass,Location, Rotation);
+	Proyectil->SetRebote(Rebote);
 	Proyectil->SetOwner(this);
-	
-
+	return Proyectil->GetActorForwardVector();
 }
