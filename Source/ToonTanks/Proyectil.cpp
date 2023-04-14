@@ -49,6 +49,8 @@ void AProyectil::Tick(float DeltaTime)
 	Movement(DeltaTime);
 }
 
+
+
 void AProyectil::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit){
 	auto MyOwner= GetOwner();
 
@@ -63,7 +65,7 @@ void AProyectil::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimit
 
 	if(OtherActor && OtherActor!=this && OtherActor!=MyOwner){
 		if(!OtherActor->ActorHasTag(StandardPawnTag)){
-			Bounce(Hit.ImpactNormal);
+			BounceV2(Hit.ImpactNormal);
 			return;
 		}
 		UGameplayStatics::ApplyDamage(OtherActor, Dmg, MyOwnerInstigator, this, DmgTypeClass);
@@ -89,6 +91,9 @@ void AProyectil::Bounce(FVector HitNormal)
 		GetActorRotation().Yaw+
 		UCalculatriz::GetBounceAngle( GetActorForwardVector() , HitNormal )
 	);
-	SetActorRelativeRotation(FRotator(0,Teta,0));
+	FVector NewDirection=FVector(GetActorForwardVector().Y,GetActorForwardVector().X,GetActorForwardVector().Z);
+	//SetActorRelativeRotation(FRotator(0,Teta,0));
+	//SetActorForwardVector(NewDirection);
 }
 
+void AProyectil::BounceV2_Implementation(FVector HitWall){}

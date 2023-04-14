@@ -68,4 +68,7 @@ public:
 	bool Rebote;
 	void SetRebote(bool Reicochet){Rebote=Reicochet;}
 
+	UFUNCTION(BlueprintNativeEvent,BlueprintCallable)
+	void BounceV2(FVector HitWall);
+
 };
