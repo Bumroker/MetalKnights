@@ -13,5 +13,14 @@ UCLASS()
 class TOONTANKS_API AEnemyAIController : public AAIController
 {
 	GENERATED_BODY()
+protected:
+	virtual void BeginPlay() override;
+public:
+	APawn* PlayerPawn;
+
+private:
 	
+	UPROPERTY(EditAnywhere)
+	class UBehaviorTree* AIBehavior;
+
 };
