@@ -95,5 +95,3 @@ void AProyectil::Bounce(FVector HitNormal)
 	//SetActorRelativeRotation(FRotator(0,Teta,0));
 	//SetActorForwardVector(NewDirection);
 }
-
-void AProyectil::BounceV2_Implementation(FVector HitWall){}
