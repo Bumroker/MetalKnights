@@ -46,6 +46,7 @@ private:
 
 protected:
 
+	UFUNCTION(BlueprintCallable)
 	void RotateTurret(FVector LookAtTarget);	
 
 	UFUNCTION(BlueprintCallable)
