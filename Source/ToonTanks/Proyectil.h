@@ -48,8 +48,6 @@ private:
 	UFUNCTION()
 	void Movement(float DeltaTime);
 	UFUNCTION()
-	void Bounce(FVector HitNormal);
-	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 	
 	
@@ -70,5 +68,7 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void BounceV2(FVector HitWall);
+	UFUNCTION(BlueprintImplementableEvent)
+	void AutoDestroy();
 
 };
