@@ -38,9 +38,10 @@ void AGM_ToonTanks::HandleGameStart(){
     UE_LOG(LogTemp, Warning, TEXT("Left Enemies: %i"), TargetTowers);
     Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this, 0));
     TankPC= Cast<ATTPlayerController>(UGameplayStatics::GetPlayerController(this, 0));
+    TankPC->SetPlayerEnabledState(true);
+//Timer antes de empezar a jugar
 
-    StartGame();
-
+    /*StartGame();
     if(TankPC){
         TankPC->SetPlayerEnabledState(false);
 
@@ -48,7 +49,7 @@ void AGM_ToonTanks::HandleGameStart(){
         FTimerDelegate PlayerEnableTD=FTimerDelegate::CreateUObject(TankPC, &ATTPlayerController::SetPlayerEnabledState, true);
         GetWorldTimerManager().SetTimer(PlayerEnableTH,PlayerEnableTD,StartDelay,false);
 
-    }
+    }*/
 }
 int32 AGM_ToonTanks::GetTargetTowerCount(){
     TArray<AActor*> Towers;

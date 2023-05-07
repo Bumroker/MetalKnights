@@ -23,6 +23,7 @@ public:
 	UPROPERTY(EditAnywhere, Category="Combat")
 	TSubclassOf<class UCameraShakeBase> DeathCameraShakeClass;
 
+
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta=(AllowPrivateAccess="true"))
 	class UCapsuleComponent* CapsuleComp;
@@ -44,8 +45,9 @@ private:
 
 	
 
-protected:
+public:
 
+	UFUNCTION(BlueprintCallable)
 	void RotateTurret(FVector LookAtTarget);	
 
 	UFUNCTION(BlueprintCallable)

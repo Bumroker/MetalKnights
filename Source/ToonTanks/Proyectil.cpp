@@ -33,6 +33,12 @@ void AProyectil::BeginPlay()
 	if(HitParticles){UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, this->GetActorLocation(), this->GetActorRotation());}	
 }
 
+// Called every frame
+void AProyectil::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	Movement(DeltaTime);
+}
 void AProyectil::Movement(float DeltaTime)
 {
 	FVector DeltaLocation(0);
@@ -41,13 +47,6 @@ void AProyectil::Movement(float DeltaTime)
 }
 
 
-
-// Called every frame
-void AProyectil::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-	Movement(DeltaTime);
-}
 
 void AProyectil::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit){
 	auto MyOwner= GetOwner();
@@ -60,35 +59,19 @@ void AProyectil::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimit
 
 	auto MyOwnerInstigator = MyOwner->GetInstigatorController();
 	auto DmgTypeClass = UDamageType::StaticClass();
-
-	if(OtherActor && OtherActor!=this && OtherActor!=MyOwner){
-		if(!OtherActor->ActorHasTag(StandardPawnTag)){
-			Bounce(Hit.ImpactNormal);
-			return;
+	if(Rebote){
+		if(OtherActor && OtherActor!=this && OtherActor!=MyOwner){
+			if(!OtherActor->ActorHasTag(StandardPawnTag)){
+				BounceV2(Hit.ImpactNormal);
+				return;
+			}
+			UGameplayStatics::ApplyDamage(OtherActor, Dmg, MyOwnerInstigator, this, DmgTypeClass);
+			if(HitParticles){UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, this->GetActorLocation(), this->GetActorRotation());}	
+			if(HitSound){UGameplayStatics::SpawnSoundAtLocation(this,HitSound,this->GetActorLocation());}
+			if(HitCameraShakeClass){GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(HitCameraShakeClass);}
 		}
-		UGameplayStatics::ApplyDamage(OtherActor, Dmg, MyOwnerInstigator, this, DmgTypeClass);
-		if(HitParticles){UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, this->GetActorLocation(), this->GetActorRotation());}	
-		if(HitSound){UGameplayStatics::SpawnSoundAtLocation(this,HitSound,this->GetActorLocation());}
-		if(HitCameraShakeClass){GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(HitCameraShakeClass);}
 	}
+	
 	Destroy();
-}
-/*void AProyectil::Bounce(AActor* HitWall)
-{
-	FVector Direction= GetActorForwardVector();
-	float Old=GetActorRotation().Yaw;
-	float Alpha=acos(GetDotProductTo(HitWall));
-	float Beta=(90-Alpha)*2;
-	FRotator NewRotation(GetActorRotation().Pitch,GetActorRotation().Roll,GetActorRotation().Yaw+Beta);
-	SetActorRotation(NewRotation);
-	UE_LOG(LogTemp, Warning, TEXT("New --> %f / Alpha --> %f / Old --> %f"),Beta,Alpha,Old )
-}*/
-void AProyectil::Bounce(FVector HitNormal)
-{
-	float Teta=(
-		GetActorRotation().Yaw+
-		UCalculatriz::GetBounceAngle( GetActorForwardVector() , HitNormal )
-	);
-	SetActorRelativeRotation(FRotator(0,Teta,0));
 }
 

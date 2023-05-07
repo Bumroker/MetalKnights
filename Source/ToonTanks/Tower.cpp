@@ -20,9 +20,10 @@ void ATower::BeginPlay()
 void ATower::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+    /*
     if(InFireRange()){
         RotateTurret(Tank->GetActorLocation());
-    }
+    }*/
 }
 void ATower::HandleDestruction(){
     Super::HandleDestruction();

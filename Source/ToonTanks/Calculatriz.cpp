@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "math.h" 
 #include "Calculatriz.h"
+#include "math.h" 
 
 float UCalculatriz::GetBounceAngle(FVector Alpha,FVector Beta)
 {
@@ -9,22 +9,23 @@ float UCalculatriz::GetBounceAngle(FVector Alpha,FVector Beta)
     //Angulo de entrada
     float Teta=GetVectorsAngle(Alpha,Beta);
     float Sense=1;
-    if(Beta.X<=0 && Beta.X>-1){Beta.X=-Beta.Y;}else if(Beta.Y<=0 && Beta.Y>-1){Beta.Y=Beta.X;}
-    //UE_LOG(LogTemp, Warning, TEXT("(%f,%f)"),Beta.X,Beta.Y )
+    if(abs(Beta.X)==0){Beta.X=-Beta.Y;}else 
+    if(abs(Beta.Y)==0){Beta.Y=Beta.X;}else
 
-    if(-Beta.X/Alpha.X<0){
-        Sense=-1;
-	    //UE_LOG(LogTemp, Warning, TEXT("UE_LO a vino X") )
-    }
-    if(-Beta.Y/Alpha.Y<0){
-        Sense=-1;
-	    //UE_LOG(LogTemp, Warning, TEXT("UE_LO a vino Y") )
-    }
+    //comprobar cual es el threshhold para que pueda considerar usar las normas de paredes horizontales o verticales
+    if(abs(Beta.X)<abs(Beta.Y)){}
+
+
+    UE_LOG(LogTemp, Warning, TEXT("(%f,%f)"),Beta.X,Beta.Y )
+
+    if(-Beta.X/Alpha.X<0 || -Beta.Y/Alpha.Y<0){Sense=-1;}
+    UE_LOG(LogTemp, Warning, TEXT("(%f,%f)"),-Beta.X/Alpha.X,-Beta.Y/Alpha.Y )
+
     float Zeta=180-Teta;
     float Epsilon=(Teta-Zeta)*Sense;
-	//UE_LOG(LogTemp, Warning, TEXT("ImpactAngle --> %f"),Teta )
-	//UE_LOG(LogTemp, Warning, TEXT("ImoactAngleV2 --> %f"),Zeta ) 
-	//UE_LOG(LogTemp, Warning, TEXT("RotationBounce --> %f"),Epsilon )
+	/*UE_LOG(LogTemp, Warning, TEXT("ImpactAngle --> %f"),Teta )
+	UE_LOG(LogTemp, Warning, TEXT("ImoactAngleV2 --> %f"),Zeta ) 
+	UE_LOG(LogTemp, Warning, TEXT("RotationBounce --> %f"),Epsilon )*/
 
     return Epsilon;
 }

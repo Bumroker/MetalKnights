@@ -40,24 +40,4 @@ void ATank::HandleDestruction(){
     bAlive=false;
 }
 
-// Called to bind functionality to input
-/*void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
-    PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
-    PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Rotate);
-    PlayerInputComponent->BindAction(TEXT("Fire"), IE_Pressed, this, &ATank::Fire);
-}
-void ATank::Move(float Value){
-    FVector DeltaLocation(0);
-    DeltaLocation.X=Value*Speed*UGameplayStatics::GetWorldDeltaSeconds(this);
-    AddActorLocalOffset(DeltaLocation, true);
-}
-
-void ATank::Rotate(float Value){
-    FRotator DeltaRotation(0);
-    DeltaRotation.Yaw=Value*RotationSpeed*UGameplayStatics::GetWorldDeltaSeconds(this);
-    AddActorLocalRotation(DeltaRotation, true);
-}
-*/
