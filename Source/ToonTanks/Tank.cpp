@@ -40,4 +40,11 @@ void ATank::HandleDestruction(){
     bAlive=false;
 }
 
+void ATank::RotateForwardDirection(FVector LookAtTarget)
+{
+	FVector ToTarget=LookAtTarget-BaseMesh->GetComponentLocation();
+	FRotator LookAtRotation(0,ToTarget.Rotation().Yaw,0);
+	BaseMesh->SetWorldRotation(FMath::RInterpTo(BaseMesh->GetComponentRotation(), LookAtRotation, UGameplayStatics::GetWorldDeltaSeconds(this), 25));
+}
+
 

@@ -24,7 +24,8 @@ void UBTService_PlayerLocationIfSeen::TickNode(UBehaviorTreeComponent &OwnerComp
     if(PlayerPawn==nullptr)return;
     if(OwnerComp.GetAIOwner()==nullptr)return;
     if(OwnerComp.GetAIOwner()->LineOfSightTo(PlayerPawn)){
-        OwnerComp.GetBlackboardComponent()->SetValueAsVector(GetSelectedBlackboardKey(), PlayerPawn->GetActorLocation());  
+        OwnerComp.GetBlackboardComponent()->SetValueAsVector(GetSelectedBlackboardKey(), PlayerPawn->GetActorLocation());
+        //OwnerComp.GetAIOwner()->SetFocus(PlayerPawn);  
         Enemy->AutoAim=true;
     }else{
         OwnerComp.GetBlackboardComponent()->ClearValue(GetSelectedBlackboardKey());  

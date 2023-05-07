@@ -24,7 +24,7 @@ public:
 	TSubclassOf<class UCameraShakeBase> DeathCameraShakeClass;
 
 
-private:
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta=(AllowPrivateAccess="true"))
 	class UCapsuleComponent* CapsuleComp;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta=(AllowPrivateAccess="true"))
@@ -34,6 +34,8 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta=(AllowPrivateAccess="true"))
 	USceneComponent* SpawnPoint;
 	
+private:
+
 	UPROPERTY(EditAnywhere, Category="Combat")
 	class UParticleSystem* EsplosionParticles;
 

@@ -27,6 +27,9 @@ public:
 	UPROPERTY(EditAnywhere,BlueprintReadWrite)
 	bool AutoAim=false;
 
+	UFUNCTION(BlueprintCallable)
+	void RotateForwardDirection(FVector LockAtTarget);
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

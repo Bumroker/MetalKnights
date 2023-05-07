@@ -1,5 +1,21 @@
 [
 	{
+		"file": "C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\Source\\ToonTanks\\BTService_FaceMoveDirection.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\.vscode\\compileCommands_ToonTanks\\ToonTanks.249.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\Source\\ToonTanks\\BTService_FaceMoveDirection.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\.vscode\\compileCommands_ToonTanks\\ToonTanks.249.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
 		"file": "C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\Source\\ToonTanks\\BTService_PlayerLocation.cpp",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
@@ -25,22 +41,6 @@
 	},
 	{
 		"file": "C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\Source\\ToonTanks\\BTService_PlayerLocationIfSeen.h",
-		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
-			"@C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\.vscode\\compileCommands_ToonTanks\\ToonTanks.249.rsp"
-		],
-		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
-	},
-	{
-		"file": "C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\Source\\ToonTanks\\BTTask_Aim.cpp",
-		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
-			"@C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\.vscode\\compileCommands_ToonTanks\\ToonTanks.249.rsp"
-		],
-		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
-	},
-	{
-		"file": "C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\Source\\ToonTanks\\BTTask_Aim.h",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
 			"@C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\.vscode\\compileCommands_ToonTanks\\ToonTanks.249.rsp"
@@ -169,22 +169,6 @@
 	},
 	{
 		"file": "C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\Source\\ToonTanks\\HealthComponent.h",
-		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
-			"@C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\.vscode\\compileCommands_ToonTanks\\ToonTanks.249.rsp"
-		],
-		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
-	},
-	{
-		"file": "C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\Source\\ToonTanks\\Projectile.cpp",
-		"arguments": [
-			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
-			"@C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\.vscode\\compileCommands_ToonTanks\\ToonTanks.249.rsp"
-		],
-		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
-	},
-	{
-		"file": "C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\Source\\ToonTanks\\Projectile.h",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
 			"@C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\.vscode\\compileCommands_ToonTanks\\ToonTanks.249.rsp"
