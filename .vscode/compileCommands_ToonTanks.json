@@ -80,6 +80,22 @@
 		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
 	},
 	{
+		"file": "C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\Source\\ToonTanks\\BTTask_Rotate.cpp",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\.vscode\\compileCommands_ToonTanks\\ToonTanks.249.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
+		"file": "C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\Source\\ToonTanks\\BTTask_Rotate.h",
+		"arguments": [
+			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",
+			"@C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\.vscode\\compileCommands_ToonTanks\\ToonTanks.249.rsp"
+		],
+		"directory": "C:\\Program Files\\Epic Games\\UE_5.1\\Engine\\Source"
+	},
+	{
 		"file": "C:\\Users\\bumro\\OneDrive\\Documents\\_GuorquespeisUltraLaser\\1_Unreal_Guorkespeis\\ToonTanks\\Source\\ToonTanks\\BTTask_Shoot.cpp",
 		"arguments": [
 			"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.33.31629\\bin\\HostX64\\x64\\cl.exe",

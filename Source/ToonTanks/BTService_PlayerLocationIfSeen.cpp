@@ -15,9 +15,10 @@ UBTService_PlayerLocationIfSeen::UBTService_PlayerLocationIfSeen()
 void UBTService_PlayerLocationIfSeen::TickNode(UBehaviorTreeComponent &OwnerComp, uint8 *NodeMemory, float DeltaSeconds)
 {
     Super::TickNode(OwnerComp,NodeMemory,DeltaSeconds);
-    //CAMBIAR ESTO PARA EL MULTIPLAYER
+    
+//CAMBIAR ESTO PARA EL MULTIPLAYER
     APawn* PlayerPawn=UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
-    //CAMBIAR ESTO PARA EL MULTIPLAYER
+//CAMBIAR ESTO PARA EL MULTIPLAYER
 
     ATank* Enemy = Cast<ATank>(OwnerComp.GetAIOwner()->GetPawn());
 

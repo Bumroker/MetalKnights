@@ -14,8 +14,11 @@ UBTService_PlayerLocation::UBTService_PlayerLocation()
 void UBTService_PlayerLocation::TickNode(UBehaviorTreeComponent &OwnerComp, uint8 *NodeMemory, float DeltaSeconds)
 {
     Super::TickNode(OwnerComp,NodeMemory,DeltaSeconds);
-
+    
+//CAMBIAR ESTO PARA EL MULTIJUGADOR
     APawn* PlayerPawn=UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+//CAMBIAR ESTO PARA EL MULTIJUGADOR
+
     if(PlayerPawn==nullptr)return;
     OwnerComp.GetBlackboardComponent()->SetValueAsVector(GetSelectedBlackboardKey(), PlayerPawn->GetActorLocation());
 }

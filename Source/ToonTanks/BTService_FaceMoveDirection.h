@@ -10,7 +10,7 @@
  * 
  */
 UCLASS()
-class TOONTANKS_API UBTService_FaceMoveDirection : public UBTService
+class TOONTANKS_API UBTService_FaceMoveDirection : public UBTService_BlackboardBase
 {
 	GENERATED_BODY()
 public:
