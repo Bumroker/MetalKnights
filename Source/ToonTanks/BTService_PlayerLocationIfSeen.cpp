@@ -27,7 +27,9 @@ void UBTService_PlayerLocationIfSeen::TickNode(UBehaviorTreeComponent &OwnerComp
     if(OwnerComp.GetAIOwner()->LineOfSightTo(PlayerPawn)){
         OwnerComp.GetBlackboardComponent()->SetValueAsVector(GetSelectedBlackboardKey(), PlayerPawn->GetActorLocation());
         //OwnerComp.GetAIOwner()->SetFocus(PlayerPawn);  
+        if(Enemy->FoundSound && Enemy->AutoAim==false){UGameplayStatics::SpawnSoundAtLocation(this,Enemy->FoundSound,Enemy->GetActorLocation());}
         Enemy->AutoAim=true;
+        
     }else{
         OwnerComp.GetBlackboardComponent()->ClearValue(GetSelectedBlackboardKey());  
         Enemy->AutoAim=false;

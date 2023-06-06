@@ -30,6 +30,9 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void RotateForwardDirection(FVector LockAtTarget);
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	class USoundBase* FoundSound;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -49,5 +52,7 @@ private:
 	//void Rotate(float Value);
 
 	APlayerController* TankPlayerController;
+
+	
 
 };

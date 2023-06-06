@@ -8,6 +8,7 @@ UCLASS()
 class TOONTANKS_API UBTService_PlayerLocationIfSeen : public UBTService_BlackboardBase
 {
 	GENERATED_BODY()
+
 public:
 	UBTService_PlayerLocationIfSeen();
 
