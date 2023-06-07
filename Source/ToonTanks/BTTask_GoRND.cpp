@@ -15,6 +15,8 @@ EBTNodeResult::Type UBTTask_GoRND::ExecuteTask(UBehaviorTreeComponent& OwnerComp
     Super::ExecuteTask(OwnerComp,NodeMemory);
     ATank* Enemy = Cast<ATank>(OwnerComp.GetAIOwner()->GetPawn());
     FVector EnemyLocation=Enemy->GetActorLocation();
+    
+    //Variable a rellenar 
     auto BBKey = OwnerComp.GetBlackboardComponent();
 
     if(Enemy==nullptr || BBKey==nullptr)return EBTNodeResult::Failed;
