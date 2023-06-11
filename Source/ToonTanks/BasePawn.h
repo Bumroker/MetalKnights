@@ -45,7 +45,11 @@ private:
 	UPROPERTY(EditAnywhere, Category="Combat")
 	class USoundBase* DeathSound;
 
-	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stats", meta=(AllowPrivateAccess="true"));
+	float MovementSpeed=800;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stats", meta=(AllowPrivateAccess="true"));
+	float RotationSpeed=360;
 
 public:
 

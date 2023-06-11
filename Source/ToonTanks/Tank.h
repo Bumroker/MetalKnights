@@ -43,8 +43,7 @@ protected:
 private:
 
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stats", meta=(AllowPrivateAccess="true"));
-	float Speed=800;
+	
 	
 	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stats", meta=(AllowPrivateAccess="true"));
 	//float RotationSpeed=200;
