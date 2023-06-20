@@ -13,7 +13,7 @@ void ATower::BeginPlay()
 	
     Tank=Cast<ATank>(UGameplayStatics::GetPlayerPawn(this,0));
 
-    GetWorldTimerManager().SetTimer(CadenceTimerHandle, this, &ATower::CheckFireCondition, Cadence, true);
+    //GetWorldTimerManager().SetTimer(CadenceTimerHandle, this, &ATower::CheckFireCondition, Cadence, true);
 }
 
 // Called every frame

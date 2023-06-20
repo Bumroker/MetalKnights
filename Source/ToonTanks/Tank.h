@@ -24,8 +24,7 @@ public:
 	UPROPERTY(VisibleAnywhere)
 	bool bAlive;
 
-	UPROPERTY(EditAnywhere,BlueprintReadWrite)
-	bool AutoAim=false;
+	
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void RotateForwardDirection(FVector LockAtTarget);

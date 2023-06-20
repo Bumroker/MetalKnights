@@ -25,6 +25,7 @@ ABasePawn::ABasePawn()
 	SpawnPoint->SetupAttachment(TurretMesh);
 }
 
+
 void ABasePawn::HandleDestruction(){
 	if(EsplosionParticles){UGameplayStatics::SpawnEmitterAtLocation(this, EsplosionParticles, this->GetActorLocation(), this->GetActorRotation());}
 	if(DeathSound){UGameplayStatics::SpawnSoundAtLocation(this,DeathSound,this->GetActorLocation());}
@@ -34,7 +35,21 @@ void ABasePawn::HandleDestruction(){
 void ABasePawn::RotateTurret(FVector LookAtTarget){
 	FVector ToTarget=LookAtTarget-TurretMesh->GetComponentLocation();
 	FRotator LookAtRotation(0,ToTarget.Rotation().Yaw,0);
-	TurretMesh->SetWorldRotation(FMath::RInterpTo(TurretMesh->GetComponentRotation(), LookAtRotation, UGameplayStatics::GetWorldDeltaSeconds(this), 25));
+	TurretMesh->SetWorldRotation(FMath::RInterpTo(TurretMesh->GetComponentRotation(), LookAtRotation, UGameplayStatics::GetWorldDeltaSeconds(this), 50));
+}
+
+void ABasePawn::PivotTurret()
+{
+	FRotator PivotRotation;
+	int ActualRotation=ceil(TurretMesh->GetRelativeRotation().Yaw);
+	if(ActualRotation>=TurretAngleThreshhold){
+		RotateDirection=-1;
+	}else if(ActualRotation<=-TurretAngleThreshhold){
+		RotateDirection=1;
+	}
+	PivotRotation.Yaw=CalculateSpeed(RotateDirection,RotationSpeed,8);
+	TurretMesh->AddRelativeRotation(PivotRotation);
+	TurretMesh->SetRelativeRotation(CleanRotation(TurretMesh->GetRelativeRotation()));
 }
 
 FVector ABasePawn::Fire(bool Rebote){
@@ -44,4 +59,11 @@ FVector ABasePawn::Fire(bool Rebote){
 	Proyectil->SetRebote(Rebote);
 	Proyectil->SetOwner(this);
 	return Proyectil->GetActorForwardVector();
+}
+
+float ABasePawn::CalculateSpeed(float Direction, float NavigationSpeed, float Slow){
+	return (Direction*MovementSpeed*UGameplayStatics::GetWorldDeltaSeconds(this))/Slow;
+}
+FRotator ABasePawn::CleanRotation(FRotator ActualRotation){
+	return FRotator(0,ActualRotation.Yaw,0);
 }

@@ -12,7 +12,6 @@ UCLASS()
 class TOONTANKS_API ABasePawn : public APawn
 {
 	GENERATED_BODY()
-
 public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
@@ -23,7 +22,8 @@ public:
 	UPROPERTY(EditAnywhere, Category="Combat")
 	TSubclassOf<class UCameraShakeBase> DeathCameraShakeClass;
 
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Combat")
+	bool AutoAim=false;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Components", meta=(AllowPrivateAccess="true"))
 	class UCapsuleComponent* CapsuleComp;
@@ -45,11 +45,12 @@ private:
 	UPROPERTY(EditAnywhere, Category="Combat")
 	class USoundBase* DeathSound;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stats", meta=(AllowPrivateAccess="true"));
-	float MovementSpeed=800;
+	FRotator CleanRotation(FRotator ActualRotation);
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stats", meta=(AllowPrivateAccess="true"));
-	float RotationSpeed=360;
+	UPROPERTY()
+	float TurretAngleThreshhold=45;
+	UPROPERTY()
+	float RotateDirection=1;
 
 public:
 
@@ -57,8 +58,21 @@ public:
 	void RotateTurret(FVector LookAtTarget);	
 
 	UFUNCTION(BlueprintCallable)
+	void PivotTurret();
+
+	UFUNCTION(BlueprintCallable)
 	FVector Fire(bool Rebote=false);
 
+	UFUNCTION(BlueprintCallable, BlueprintPure)
+	float CalculateSpeed(float Direction, float NavigationSpeed=800, float Slow=1);
 
-	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stats");
+	float MovementSpeed=800;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stats");
+	float RotationSpeed=360;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stats");
+	int AILevel=1;
+
 };
