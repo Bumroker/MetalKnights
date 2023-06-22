@@ -17,6 +17,9 @@ class TOONTANKS_API AGM_ToonTanks : public AGameModeBase
 public:
 
 	void ActorDied(AActor* DeadActor);
+	UPROPERTY(EditAnywhere, BLueprintReadWrite)
+	int TargetEnemys=0;
+
 protected:
 
 	virtual void BeginPlay() override;
@@ -27,6 +30,7 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void GameOver(bool bWonGame);
 
+
 private:
 
 	class ATank* Tank;
@@ -36,7 +40,10 @@ private:
 
 	void HandleGameStart();
 
-	int32 TargetTowers=0;
+	
 	int32 GetTargetTowerCount();
+
+    TArray<AActor*> Enemys;
+
 
 };

@@ -53,7 +53,9 @@ private:
 	float RotateDirection=1;
 
 public:
-
+	UPROPERTY(VisibleAnywhere)
+	bool bAlive;
+	
 	UFUNCTION(BlueprintCallable)
 	void RotateTurret(FVector LookAtTarget);	
 

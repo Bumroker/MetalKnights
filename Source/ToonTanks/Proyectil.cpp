@@ -7,6 +7,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/DamageType.h"
 #include "Particles/ParticleSystemComponent.h"
+#include "TimerManager.h"
 #include "GameFramework/PlayerController.h"
 #include "Calculatriz.h"
 
@@ -16,8 +17,8 @@ AProyectil::AProyectil()
  	// dont need a tick
 	PrimaryActorTick.bCanEverTick = false;
 
-	ProjectileMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh"));
-	RootComponent = ProjectileMesh;
+	ProjectilMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh"));
+	RootComponent = ProjectilMesh;
 	TrailParticles = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("TrailParticlesComponent"));
 	TrailParticles->SetupAttachment(RootComponent);
 	
@@ -28,7 +29,7 @@ AProyectil::AProyectil()
 void AProyectil::BeginPlay()
 {
 	Super::BeginPlay();
-	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProyectil::OnHit);
+	ProjectilMesh->OnComponentHit.AddDynamic(this, &AProyectil::OnHit);
 	if(ShootSound){UGameplayStatics::SpawnSoundAtLocation(this,ShootSound,this->GetActorLocation());}
 	if(HitParticles){UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, this->GetActorLocation(), this->GetActorRotation());}	
 }
@@ -37,7 +38,7 @@ void AProyectil::BeginPlay()
 void AProyectil::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	Movement(DeltaTime);
+	if(!Destroyed) Movement(DeltaTime);
 }
 void AProyectil::Movement(float DeltaTime)
 {
@@ -50,7 +51,7 @@ void AProyectil::Movement(float DeltaTime)
 
 void AProyectil::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit){
 	auto MyOwner= GetOwner();
-
+	if(Destroyed)return;
 	if (MyOwner==nullptr){
 		Destroy();
 		return;
@@ -59,19 +60,21 @@ void AProyectil::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimit
 
 	auto MyOwnerInstigator = MyOwner->GetInstigatorController();
 	auto DmgTypeClass = UDamageType::StaticClass();
-	if(Rebote){
-		if(OtherActor && OtherActor!=this && OtherActor!=MyOwner){
-			if(!OtherActor->ActorHasTag(StandardPawnTag)){
-				BounceV2(Hit.ImpactNormal);
-				return;
-			}
-			UGameplayStatics::ApplyDamage(OtherActor, Dmg, MyOwnerInstigator, this, DmgTypeClass);
-			if(HitParticles){UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, this->GetActorLocation(), this->GetActorRotation());}	
-			if(HitSound){UGameplayStatics::SpawnSoundAtLocation(this,HitSound,this->GetActorLocation());}
-			if(HitCameraShakeClass){GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(HitCameraShakeClass);}
+	if(OtherActor && OtherActor!=this && OtherActor!=MyOwner){
+		if(!OtherActor->ActorHasTag(StandardPawnTag) && !OtherActor->ActorHasTag(StandardProjectilTag) && Rebotes!=MaxRebotes && Rebote){
+			Rebotes++;
+			BounceV2(Hit.ImpactNormal);
+			return;
 		}
+		UGameplayStatics::ApplyDamage(OtherActor, Dmg, MyOwnerInstigator, this, DmgTypeClass);
+		if(HitParticles){UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, this->GetActorLocation(), this->GetActorRotation());}	
+		if(HitSound){UGameplayStatics::SpawnSoundAtLocation(this,HitSound,this->GetActorLocation());}
+		if(HitCameraShakeClass){GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(HitCameraShakeClass);}
 	}
-	
-	Destroy();
+	ProjectilMesh->SetHiddenInGame(true);
+	ProjectilMesh->SetCollisionProfileName(TEXT("OverlapAll"));
+	Destroyed=true;
+	GetWorldTimerManager().SetTimer(DestroyTimerHandle, this, &AProyectil::Explode, DestroyTime, false);
 }
 
+void AProyectil::Explode(){Destroy();}

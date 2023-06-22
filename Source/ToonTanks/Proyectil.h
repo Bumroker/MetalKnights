@@ -12,7 +12,36 @@ class TOONTANKS_API AProyectil : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AProyectil();
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Combat")
+	UStaticMeshComponent* ProjectilMesh;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Combat")
+	class UParticleSystem* HitParticles;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Combat")
+	class UParticleSystemComponent* TrailParticles;
 	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Combat")
+	class USoundBase* HitSound;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Combat")
+	class USoundBase* ShootSound;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Combat")
+	TSubclassOf<class UCameraShakeBase> HitCameraShakeClass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FName StandardPawnTag="Pawn";
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FName StandardProjectilTag="Projectil";
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	float DestroyTime=0.7;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int MaxRebotes=2;
 
 protected:
 	// Called when the game starts or when spawned
@@ -21,36 +50,16 @@ protected:
 	
 private:
 
-	UPROPERTY(EditAnywhere)
-	FName StandardPawnTag="Pawn";
-
-	UPROPERTY(EditDefaultsOnly, Category="Combat")
-	UStaticMeshComponent* ProjectileMesh;
-
-	UPROPERTY(EditAnywhere, Category="Combat")
-	class UParticleSystem* HitParticles;
-
-	UPROPERTY(EditAnywhere, Category="Combat")
-	class UParticleSystemComponent* TrailParticles;
-
-	UPROPERTY(EditAnywhere, Category="Combat")
-	class USoundBase* HitSound;
-	
-	UPROPERTY(EditAnywhere, Category="Combat")
-	class USoundBase* ShootSound;
-
-	UPROPERTY(EditAnywhere, Category="Combat")
-	TSubclassOf<class UCameraShakeBase> HitCameraShakeClass;
-
-	
-	
+	int Rebotes=0;
 
 	UFUNCTION()
 	void Movement(float DeltaTime);
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 	
-	
+	FTimerHandle DestroyTimerHandle;
+	bool Destroyed;
+	void Explode();
 
 
 public:	

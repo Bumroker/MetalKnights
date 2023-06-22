@@ -37,7 +37,8 @@ void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 	// ...
 }
 
-void UHealthComponent::DmgTaken(AActor* DamagedActor, float Dmg, const UDamageType* DmgType, class AController* Instigator, AActor* DmgCauser){
+void UHealthComponent::DmgTaken(AActor* DamagedActor, float Dmg, const UDamageType* DmgType, class AController* Instigator, AActor* DmgCauser){	
+	if(Invencible)return;
 	if(Dmg<=0 || Health<=0)return;
 	Health-=Dmg;
 	UE_LOG(LogTemp, Warning, TEXT("Health: %f"), Health);

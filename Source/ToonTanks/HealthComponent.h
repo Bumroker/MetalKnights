@@ -24,6 +24,9 @@ private:
 	float MaxHealth = 100;
 	float Health = 0;
 
+	UPROPERTY(EditAnywhere)
+	bool Invencible;
+	
 	UFUNCTION()
 	void DmgTaken(AActor* DamagedActor, float Dmg, const UDamageType* DmgType, class AController* Instigator, AActor* DmgCauser);
 
