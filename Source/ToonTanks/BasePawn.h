@@ -63,7 +63,7 @@ public:
 	void PivotTurret();
 
 	UFUNCTION(BlueprintCallable)
-	FVector Fire(bool Rebote=false);
+	FVector Fire(bool Rebote=false,int MaxRebotes=2);
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	float CalculateSpeed(float Direction, float NavigationSpeed=800, float Slow=1);
@@ -76,5 +76,6 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stats");
 	int AILevel=1;
+
 
 };

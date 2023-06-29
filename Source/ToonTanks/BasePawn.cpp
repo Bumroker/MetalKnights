@@ -53,11 +53,11 @@ void ABasePawn::PivotTurret()
 	TurretMesh->SetRelativeRotation(CleanRotation(TurretMesh->GetRelativeRotation()));
 }
 
-FVector ABasePawn::Fire(bool Rebote){
+FVector ABasePawn::Fire(bool Rebote,int MaxRebotes){
 	FVector Location = SpawnPoint->GetComponentLocation();
 	FRotator Rotation = SpawnPoint->GetComponentRotation();
 	AProyectil* Proyectil = GetWorld()->SpawnActor<AProyectil>(ProyectilClass,Location, Rotation);
-	Proyectil->SetRebote(Rebote);
+	if(Rebote){Proyectil->SetRebote(Rebote,MaxRebotes);}
 	Proyectil->SetOwner(this);
 	return Proyectil->GetActorForwardVector();
 }

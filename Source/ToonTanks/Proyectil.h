@@ -73,7 +73,8 @@ public:
 
 	UPROPERTY(EditAnywhere, Category="Combat")
 	bool Rebote;
-	void SetRebote(bool Reicochet){Rebote=Reicochet;}
+	void SetRebote(bool Reicochet, int RebotesMax){Rebote=Reicochet; MaxRebotes=RebotesMax;}
+
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void BounceV2(FVector HitWall);

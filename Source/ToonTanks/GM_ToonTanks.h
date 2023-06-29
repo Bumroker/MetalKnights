@@ -16,6 +16,7 @@ class TOONTANKS_API AGM_ToonTanks : public AGameModeBase
 	
 public:
 
+	UFUNCTION(BlueprintCallable)
 	void ActorDied(AActor* DeadActor);
 	UPROPERTY(EditAnywhere, BLueprintReadWrite)
 	int TargetEnemys=0;

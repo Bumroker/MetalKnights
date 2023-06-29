@@ -27,6 +27,7 @@ private:
 	UPROPERTY(EditAnywhere)
 	bool Invencible;
 	
+	
 	UFUNCTION()
 	void DmgTaken(AActor* DamagedActor, float Dmg, const UDamageType* DmgType, class AController* Instigator, AActor* DmgCauser);
 
@@ -37,5 +38,7 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-		
+	
+	UFUNCTION(BlueprintCallable)
+	void SetInvencible(bool Invencibility){Invencible=Invencibility;};
 };
