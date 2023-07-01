@@ -53,8 +53,8 @@ private:
 	float RotateDirection=1;
 
 public:
-	UPROPERTY(VisibleAnywhere)
-	bool bAlive;
+	UPROPERTY(VisibleAnywhere,BlueprintReadWrite)
+	bool Alive;
 	
 	UFUNCTION(BlueprintCallable)
 	void RotateTurret(FVector LookAtTarget);	

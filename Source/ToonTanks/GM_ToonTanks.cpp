@@ -25,6 +25,7 @@ void AGM_ToonTanks::ActorDied(AActor* DeadActor){
     if(isEnemy){
         if(ABasePawn* DestroyedEnemy=Cast<ABasePawn>(DeadActor)){
             DestroyedEnemy->HandleDestruction();
+            DestroyedEnemy->Destroy();
             TargetEnemys--;
         UE_LOG(LogTemp, Warning, TEXT("Left Enemies: %i"), TargetEnemys);
         }
@@ -38,7 +39,7 @@ void AGM_ToonTanks::ActorDied(AActor* DeadActor){
             TankPC->SetPlayerEnabledState(false);
             TankPC->SetActorHiddenInGame(true);
             TankPC->SetActorTickEnabled(false);
-            Player->bAlive=false;
+            Player->Alive=false;
         }
     }
     /*if(DeadActor==Tank){

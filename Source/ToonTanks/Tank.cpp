@@ -16,7 +16,7 @@ ATank::ATank(){
 void ATank::BeginPlay()
 {
 	Super::BeginPlay();
-	bAlive=true;
+	Alive=true;
     TankPlayerController=Cast<APlayerController>(GetController());
 }
 
