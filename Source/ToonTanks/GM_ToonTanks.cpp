@@ -36,10 +36,11 @@ void AGM_ToonTanks::ActorDied(AActor* DeadActor){
         ABasePawn* Player=Cast<ABasePawn>(DeadActor);
         Player->HandleDestruction();
         if(TankPC){
-            TankPC->SetPlayerEnabledState(false);
-            TankPC->SetActorHiddenInGame(true);
+            //TankPC->SetPlayerEnabledState(false);
             TankPC->SetActorTickEnabled(false);
+            Player->SetActorHiddenInGame(true);
             Player->Alive=false;
+            GameOver(false);
         }
     }
     /*if(DeadActor==Tank){
