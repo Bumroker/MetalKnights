@@ -37,7 +37,7 @@ void AGM_ToonTanks::ActorDied(AActor* DeadActor){
         Player->HandleDestruction();
         if(TankPC){
             //TankPC->SetPlayerEnabledState(false);
-            TankPC->SetActorTickEnabled(false);
+            //TankPC->SetActorTickEnabled(false);
             Player->SetActorHiddenInGame(true);
             Player->Alive=false;
             GameOver(false);
