@@ -61,8 +61,8 @@ void AGM_ToonTanks::ActorDied(AActor* DeadActor){
 }
 
 void AGM_ToonTanks::HandleGameStart(){
-    TargetEnemys = GetTargetTowerCount();
-    UE_LOG(LogTemp, Warning, TEXT("Left Enemies: %i"), TargetEnemys);
+    //TargetEnemys = GetTargetTowerCount();
+    //UE_LOG(LogTemp, Warning, TEXT("Left Enemies: %i"), TargetEnemys);
 
     //CAMBIAR PARA EL MULTIPLAYER
     //Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this, 0));
