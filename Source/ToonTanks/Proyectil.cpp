@@ -61,16 +61,20 @@ void AProyectil::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimit
 	auto MyOwnerInstigator = MyOwner->GetInstigatorController();
 	auto DmgTypeClass = UDamageType::StaticClass();
 	if(OtherActor && OtherActor!=this && OtherActor!=MyOwner){
+		//Gestion de rebote
 		if(!OtherActor->ActorHasTag(StandardPawnTag) && !OtherActor->ActorHasTag(StandardProjectilTag) && Rebotes!=MaxRebotes && Rebote){
 			Rebotes++;
 			BounceV2(Hit.ImpactNormal);
 			return;
 		}
-		UGameplayStatics::ApplyDamage(OtherActor, Dmg, MyOwnerInstigator, this, DmgTypeClass);
+		//Efectos
 		if(HitParticles){UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, this->GetActorLocation(), this->GetActorRotation());}	
 		if(HitSound){UGameplayStatics::SpawnSoundAtLocation(this,HitSound,this->GetActorLocation());}
 		if(HitCameraShakeClass){GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(HitCameraShakeClass);}
-	}
+		//Damages
+		if(!OtherActor->ActorHasTag(TeamTag)){UGameplayStatics::ApplyDamage(OtherActor, Dmg, MyOwnerInstigator, this, DmgTypeClass);}
+
+	}else{Destroy();}
 	ProjectilMesh->SetHiddenInGame(true);
 	ProjectilMesh->SetCollisionProfileName(TEXT("OverlapAll"));
 	Destroyed=true;

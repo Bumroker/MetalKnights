@@ -63,7 +63,7 @@ public:
 	void PivotTurret();
 
 	UFUNCTION(BlueprintCallable)
-	FVector Fire(bool Rebote=false,int MaxRebotes=2);
+	FVector Fire(bool Rebote=false,int MaxRebotes=2, FName TeamTag="Enemy");
 
 	UFUNCTION(BlueprintCallable, BlueprintPure)
 	float CalculateSpeed(float Direction, float NavigationSpeed=800, float Slow=1);

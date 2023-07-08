@@ -53,17 +53,18 @@ void ABasePawn::PivotTurret()
 	TurretMesh->SetRelativeRotation(CleanRotation(TurretMesh->GetRelativeRotation()));
 }
 
-FVector ABasePawn::Fire(bool Rebote,int MaxRebotes){
+FVector ABasePawn::Fire(bool Rebote,int MaxRebotes, FName TeamTag){
 	FVector Location = SpawnPoint->GetComponentLocation();
 	FRotator Rotation = SpawnPoint->GetComponentRotation();
 	AProyectil* Proyectil = GetWorld()->SpawnActor<AProyectil>(ProyectilClass,Location, Rotation);
+	Proyectil->TeamTag=TeamTag;
 	if(Rebote){Proyectil->SetRebote(Rebote,MaxRebotes);}
 	Proyectil->SetOwner(this);
 	return Proyectil->GetActorForwardVector();
 }
 
 float ABasePawn::CalculateSpeed(float Direction, float NavigationSpeed, float Slow){
-	return (Direction*MovementSpeed*UGameplayStatics::GetWorldDeltaSeconds(this))/Slow;
+	return (Direction*NavigationSpeed*UGameplayStatics::GetWorldDeltaSeconds(this))/Slow;
 }
 FRotator ABasePawn::CleanRotation(FRotator ActualRotation){
 	return FRotator(0,ActualRotation.Yaw,0);

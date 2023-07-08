@@ -35,6 +35,9 @@ public:
 	FName StandardPawnTag="Pawn";
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FName TeamTag="Enemy";
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FName StandardProjectilTag="Projectil";
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
