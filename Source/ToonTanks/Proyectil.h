@@ -61,8 +61,11 @@ private:
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 	
 	FTimerHandle DestroyTimerHandle;
+	FTimerHandle LockOffTimerHandle;
 	bool Destroyed;
-	void Explode();
+	void Explode(){Destroy();}
+	bool EnabledBullet;
+	void EnableBullet(){EnabledBullet=true;}
 
 
 public:	

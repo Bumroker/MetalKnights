@@ -32,6 +32,7 @@ void AProyectil::BeginPlay()
 	ProjectilMesh->OnComponentHit.AddDynamic(this, &AProyectil::OnHit);
 	if(ShootSound){UGameplayStatics::SpawnSoundAtLocation(this,ShootSound,this->GetActorLocation());}
 	if(HitParticles){UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, this->GetActorLocation(), this->GetActorRotation());}	
+	GetWorldTimerManager().SetTimer(LockOffTimerHandle, this, &AProyectil::EnableBullet, 0.2f, false);
 }
 
 // Called every frame
@@ -74,11 +75,11 @@ void AProyectil::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimit
 		//Damages
 		if(!OtherActor->ActorHasTag(TeamTag)){UGameplayStatics::ApplyDamage(OtherActor, Dmg, MyOwnerInstigator, this, DmgTypeClass);}
 
-	}else{Destroy();}
+	}else if(EnabledBullet){Destroy();}
 	ProjectilMesh->SetHiddenInGame(true);
 	ProjectilMesh->SetCollisionProfileName(TEXT("OverlapAll"));
 	Destroyed=true;
 	GetWorldTimerManager().SetTimer(DestroyTimerHandle, this, &AProyectil::Explode, DestroyTime, false);
 }
 
-void AProyectil::Explode(){Destroy();}
+
