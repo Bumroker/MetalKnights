@@ -15,14 +15,10 @@ void AGM_ToonTanks::BeginPlay(){
     HandleGameStart();
 	
 }
-void AGM_ToonTanks::ActorDied(AActor* DeadActor){
+void AGM_ToonTanks::ActorDied(AActor* DeadActor, bool IsEnemy){
 	UE_LOG(LogTemp, Warning, TEXT("The Actor's name is %s"), *DeadActor->GetName());
-    bool isEnemy=false;
-    for(AActor* Enemy : Enemys){
-        if(DeadActor==Enemy)isEnemy=true;
-    }
-	UE_LOG(LogTemp, Warning, TEXT("Is Enemy? %s"), ( isEnemy ? TEXT("true") : TEXT("false") ));
-    if(isEnemy){
+	UE_LOG(LogTemp, Warning, TEXT("Is Enemy? %s"), ( IsEnemy ? TEXT("true") : TEXT("false") ));
+    if(IsEnemy){
         if(ABasePawn* DestroyedEnemy=Cast<ABasePawn>(DeadActor)){
             DestroyedEnemy->HandleDestruction();
             DestroyedEnemy->Destroy();

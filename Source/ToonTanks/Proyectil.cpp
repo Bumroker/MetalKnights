@@ -5,6 +5,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Kismet/KismetMathLibrary.h"
 #include "GameFramework/DamageType.h"
 #include "Particles/ParticleSystemComponent.h"
 #include "TimerManager.h"
@@ -19,8 +20,11 @@ AProyectil::AProyectil()
 
 	ProjectilMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("ProjectileMesh"));
 	RootComponent = ProjectilMesh;
+	SpawnPoint = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("SpawnPoint"));
+	SpawnPoint->SetupAttachment(ProjectilMesh);
 	TrailParticles = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("TrailParticlesComponent"));
-	TrailParticles->SetupAttachment(RootComponent);
+	TrailParticles->SetupAttachment(ProjectilMesh);
+	
 	
 
 }
@@ -31,7 +35,7 @@ void AProyectil::BeginPlay()
 	Super::BeginPlay();
 	ProjectilMesh->OnComponentHit.AddDynamic(this, &AProyectil::OnHit);
 	if(ShootSound){UGameplayStatics::SpawnSoundAtLocation(this,ShootSound,this->GetActorLocation());}
-	if(HitParticles){UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, this->GetActorLocation(), this->GetActorRotation());}	
+	if(HitParticles){UGameplayStatics::SpawnEmitterAtLocation(this, HitParticles, SpawnPoint->GetComponentLocation(), this->GetActorRotation());}	
 	GetWorldTimerManager().SetTimer(LockOffTimerHandle, this, &AProyectil::EnableBullet, 0.2f, false);
 }
 

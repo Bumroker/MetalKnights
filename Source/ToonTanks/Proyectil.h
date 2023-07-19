@@ -16,6 +16,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category="Combat")
 	UStaticMeshComponent* ProjectilMesh;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Combat", meta=(AllowPrivateAccess="true"))
+	USceneComponent* SpawnPoint;
+
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Combat")
 	class UParticleSystem* HitParticles;
 

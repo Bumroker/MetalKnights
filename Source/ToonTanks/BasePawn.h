@@ -54,7 +54,7 @@ private:
 
 public:
 	UPROPERTY(VisibleAnywhere,BlueprintReadWrite)
-	bool Alive;
+	bool Alive=true;
 	
 	UFUNCTION(BlueprintCallable)
 	void RotateTurret(FVector LookAtTarget);	
