@@ -3,7 +3,6 @@
 
 #include "GM_ToonTanks.h"
 #include "Kismet/GameplayStatics.h"
-#include "Tank.h"
 #include "BasePawn.h"
 #include "TTPlayerController.h"
 
