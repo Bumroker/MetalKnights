@@ -45,7 +45,7 @@ private:
 	UPROPERTY(EditAnywhere, Category="Combat")
 	class USoundBase* DeathSound;
 
-	FRotator CleanRotation(FRotator ActualRotation);
+
 
 	UPROPERTY()
 	float TurretAngleThreshhold=45;
@@ -59,8 +59,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void RotateTurret(FVector LookAtTarget);	
 
-	UFUNCTION(BlueprintCallable)
-	void PivotTurret();
+
 
 	UFUNCTION(BlueprintCallable)
 	FVector Fire(bool Rebote=false,int MaxRebotes=2, FName TeamTag="Enemy");

@@ -39,19 +39,6 @@ void ABasePawn::RotateTurret(FVector LookAtTarget){
 	TurretMesh->SetWorldRotation(FMath::RInterpTo(TurretMesh->GetComponentRotation(), LookAtRotation, UGameplayStatics::GetWorldDeltaSeconds(this), 50));
 }
 
-void ABasePawn::PivotTurret()
-{
-	FRotator PivotRotation;
-	int ActualRotation=ceil(TurretMesh->GetRelativeRotation().Yaw);
-	if(ActualRotation>=TurretAngleThreshhold){
-		RotateDirection=-1;
-	}else if(ActualRotation<=-TurretAngleThreshhold){
-		RotateDirection=1;
-	}
-	PivotRotation.Yaw=CalculateSpeed(RotateDirection,RotationSpeed,8);
-	TurretMesh->AddRelativeRotation(PivotRotation);
-	TurretMesh->SetRelativeRotation(CleanRotation(TurretMesh->GetRelativeRotation()));
-}
 
 FVector ABasePawn::Fire(bool Rebote,int MaxRebotes, FName TeamTag){
 	FVector Location = SpawnPoint->GetComponentLocation();
@@ -65,7 +52,4 @@ FVector ABasePawn::Fire(bool Rebote,int MaxRebotes, FName TeamTag){
 
 float ABasePawn::CalculateSpeed(float Direction, float NavigationSpeed, float Slow){
 	return (Direction*NavigationSpeed*UGameplayStatics::GetWorldDeltaSeconds(this))/Slow;
-}
-FRotator ABasePawn::CleanRotation(FRotator ActualRotation){
-	return FRotator(0,ActualRotation.Yaw,0);
 }
