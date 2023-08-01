@@ -59,6 +59,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void RotateTurret(FVector LookAtTarget);	
 
+	UFUNCTION(BlueprintCallable)
+	void FaceDirection(FVector LookAtTarget, UStaticMeshComponent *ToRotateMesh);
+
 
 
 	UFUNCTION(BlueprintCallable)

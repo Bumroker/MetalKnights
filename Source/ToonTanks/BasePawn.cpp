@@ -39,6 +39,12 @@ void ABasePawn::RotateTurret(FVector LookAtTarget){
 	TurretMesh->SetWorldRotation(FMath::RInterpTo(TurretMesh->GetComponentRotation(), LookAtRotation, UGameplayStatics::GetWorldDeltaSeconds(this), 50));
 }
 
+void ABasePawn::FaceDirection(FVector LookAtTarget, UStaticMeshComponent *ToRotateMesh){
+	FVector ToTarget=LookAtTarget-ToRotateMesh->GetComponentLocation();
+	FRotator LookAtRotation(0,ToTarget.Rotation().Yaw,0);
+	ToRotateMesh->SetWorldRotation(FMath::RInterpTo(ToRotateMesh->GetComponentRotation(), LookAtRotation, UGameplayStatics::GetWorldDeltaSeconds(this), 50));
+}
+
 
 FVector ABasePawn::Fire(bool Rebote,int MaxRebotes, FName TeamTag){
 	FVector Location = SpawnPoint->GetComponentLocation();
