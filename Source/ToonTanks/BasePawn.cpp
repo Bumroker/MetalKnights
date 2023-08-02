@@ -33,6 +33,7 @@ void ABasePawn::HandleDestruction(){
 	this->SetActorEnableCollision(ECollisionEnabled::NoCollision);
 }
 
+//EN DESUSO SUSTITUIDO POR "FaceDirection"
 void ABasePawn::RotateTurret(FVector LookAtTarget){
 	FVector ToTarget=LookAtTarget-TurretMesh->GetComponentLocation();
 	FRotator LookAtRotation(0,ToTarget.Rotation().Yaw,0);
