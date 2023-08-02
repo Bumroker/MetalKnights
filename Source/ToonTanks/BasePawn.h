@@ -46,18 +46,9 @@ private:
 	class USoundBase* DeathSound;
 
 
-
-	UPROPERTY()
-	float TurretAngleThreshhold=45;
-	UPROPERTY()
-	float RotateDirection=1;
-
 public:
 	UPROPERTY(VisibleAnywhere,BlueprintReadWrite)
 	bool Alive=true;
-	
-	UFUNCTION(BlueprintCallable)
-	void RotateTurret(FVector LookAtTarget);	
 
 	UFUNCTION(BlueprintCallable)
 	void FaceDirection(FVector LookAtTarget, UStaticMeshComponent *ToRotateMesh);
