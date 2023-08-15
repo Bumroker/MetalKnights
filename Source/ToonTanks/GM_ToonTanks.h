@@ -34,7 +34,7 @@ protected:
 
 private:
 
-	class ATank* Tank;
+	
 	class ATTPlayerController* TankPC;
 
 	float StartDelay=3;
