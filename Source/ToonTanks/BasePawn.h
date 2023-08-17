@@ -67,8 +67,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stats");
 	float RotationSpeed=360;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Stats");
-	int AILevel=1;
+	
 
 
 };
